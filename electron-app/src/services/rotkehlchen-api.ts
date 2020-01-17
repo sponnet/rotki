@@ -39,7 +39,7 @@ export class RotkehlchenApi {
 
   connect(port: number): void {
     this._axios = axios.create({
-      baseURL: `http://localhost:${port}/api/1/`,
+      baseURL: `http://my.rotki.dnp.dappnode.eth:5042/api/1/`,
       timeout: 30000
     });
   }

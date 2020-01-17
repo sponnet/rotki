@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { remote } from 'electron';
 
 @Component({})
 export default class ErrorScreen extends Vue {
@@ -26,7 +25,6 @@ export default class ErrorScreen extends Vue {
   message!: string;
 
   terminate() {
-    remote.getCurrentWindow().close();
   }
 }
 </script>

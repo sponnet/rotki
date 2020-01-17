@@ -75,7 +75,6 @@ import { TaxReportEvent } from '@/typing/types';
 import MessageDialog from '@/components/dialogs/MessageDialog.vue';
 import { TaskType } from '@/model/task';
 import { createNamespacedHelpers } from 'vuex';
-import { remote } from 'electron';
 import TaxReportOverview from '@/components/taxreport/TaxReportOverview.vue';
 import TaxReportEvents from '@/components/taxreport/TaxReportEvents.vue';
 import { Currency } from '@/model/currency';
@@ -109,18 +108,6 @@ export default class TaxReport extends Vue {
   }
 
   exportCSV() {
-    remote.dialog.showOpenDialog(
-      {
-        title: 'Select a directory',
-        properties: ['openDirectory']
-      },
-      async (filePaths: string[] | undefined) => {
-        if (!filePaths) {
-          return;
-        }
-        await this.$store.dispatch('reports/createCSV', filePaths[0]);
-      }
-    );
   }
 }
 </script>

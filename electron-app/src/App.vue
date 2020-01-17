@@ -69,7 +69,6 @@ import NotificationIndicator from '@/components/status/NotificationIndicator.vue
 import ProgressIndicator from '@/components/status/ProgressIndicator.vue';
 import './services/task-manager';
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
-import { ipcRenderer, shell } from 'electron';
 import { Message } from '@/store/store';
 import UpdateIndicator from './components/status/UpdateIndicator.vue';
 import AccountManagement from './components/AccountManagement.vue';
@@ -121,7 +120,6 @@ export default class App extends Vue {
   startupError: string = '';
 
   openSite() {
-    shell.openExternal('http://rotki.com');
   }
 
   dismiss() {
@@ -130,17 +128,6 @@ export default class App extends Vue {
 
   async created(): Promise<void> {
     this.$api.connect(4242);
-    ipcRenderer.on('failed', () => {
-      // get notified if the python subprocess dies
-      this.startupError =
-        'The Python backend crushed. Check rotkehlchen.log or open an issue in Github.';
-      // send ack to main.
-      ipcRenderer.send('ack', 1);
-    });
-    ipcRenderer.on('connected', async () => {
-      await this.$store.dispatch('version');
-      ipcRenderer.send('ack', 1);
-    });
   }
 }
 </script>

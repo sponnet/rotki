@@ -4,7 +4,7 @@ import {
   createProtocol,
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib';
-import PyHandler from './py-handler';
+// import PyHandler from './py-handler';
 import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions;
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -12,7 +12,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win: BrowserWindow | null;
-const pyHandler = new PyHandler(app);
+// const pyHandler = new PyHandler(app);
 
 // Standard scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([

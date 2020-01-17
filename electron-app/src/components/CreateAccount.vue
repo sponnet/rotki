@@ -161,7 +161,8 @@ export default class CreateAccount extends Vue {
 
     const accountCredentials: Credentials = {
       username: this.username,
-      password: this.password
+      password: this.password,
+      syncApproval: 'unknown'
     };
 
     const credentials: Credentials = {
